@@ -4,5 +4,10 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  exports: {
+    daisyui: {
+      themes: ["aqua"],
+    },
+  },
+  plugins: [require("daisyui")],
 };

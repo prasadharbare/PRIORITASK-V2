@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+const input=[1,2,3,4]
+
+function generateRandom(arr){
+  const list=[...arr0];
+  
+  return()=>{
+  const rn=Math.floor(Math.random()*list.length);
+    const removed=list.splice(rn,1)[0]
+    return removed
+  }
+}
+const getRandom=generateRandom(input);
+console.log(getRandom())

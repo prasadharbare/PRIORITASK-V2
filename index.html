@@ -1,16 +1,60 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prioritask</title>
-    <link rel="stylesheet" href="src/index.css">
-  </head>
-  <body>
-    <h1 class="underline text -2d font serif text-orange-500 text-3xl">HELLO WORLD</h1>
-    <div class="h-40 w-40 bg-slate-500 to-black p-500"></div>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <title>Prioritask</title>
+</head>
+
+<body>
+  <!-- MARK:Navbar -->
+  <div class="navbar bg-base-100">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">Prioritask</a>
+    </div>
+    <a class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <li>
+          <a href="https://github.com/prasadharbare/PRIORITASK-V2"><i class="ti ti-brand-github text-2xl"></i></a>
+        </li>
+      </ul>
+    </a>
+  </div>
+  <main class="container h-screen flex items-start">
+    <div class="card bg-base-100 w-64 md:w-80 lg:w-96 shadow-xl mx-auto ">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmUlMjB3aXRoJTIwbGFwdG9wfGVufDB8fDB8fHww" alt="Shoes" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Prioritask-Organize YourSelf</h2>
+        <input type="text" placeholder="Add Task" class="input input-bordered w-full max-w-xs" />
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">Remember me</span>
+            <input type="checkbox" checked="checked" class="checkbox" />
+          </label>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span>
+              <input type="checkbox" checked="checked" class="checkbox" />
+            </label>
+          </div>
+        </div>
+        <div class="card-actions justify-end">
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer footer-center bg-base-300 text-base-content p-4">
+    <aside>
+      <p>Copyright © <span class="show-year">2024</span> - All right reserved by <a class="text-sky-500"
+          href="https://github.com/prasadharbare/PRIORITASK-V2">prasadharbare</a> </p>
+    </aside>
+  </footer>
+  <script type="module" src="src/main.js"></script>
+</body>
+
 </html>

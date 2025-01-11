@@ -1,6 +1,7 @@
 import "./index.css";
 import localforage from "localforage";
 import SingleTask from "./Components/SingleTask";
+import { sortBy } from "lodash";
 import { titleCase, randomID } from "./utils";
 
 const formEl = document.querySelector("[data-form]");
@@ -9,10 +10,10 @@ const taskContainerEl = document.querySelector("[data-task-container]");
 
 let state = [];
 
-localforage.setDriver(localforage.LOCALSTORAGE)
+localforage.setDriver(localforage.LOCALSTORAGE);
 
 function updateLocal() {
-  localforage.setItem("tasks",state)
+  localforage.setItem("tasks", state);
 }
 
 function toggleCompleted(id) {
@@ -23,15 +24,16 @@ function toggleCompleted(id) {
     }
     return task;
   });
+
+  updateLocal();
 }
 
 localforage.getItem("tasks").then((data) => {
   state = data || [];
   renderTask();
-})
+});
 
-
-//Mark:Render
+// MARK:Rnder
 function renderTask() {
   taskContainerEl.innerHTML = "";
   const frag = document.createDocumentFragment();
@@ -41,36 +43,40 @@ function renderTask() {
   taskContainerEl.appendChild(frag);
 }
 
+//MARK:Listener
+//On new task add
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!inputEl.value) return;
-  if (inputEl === ":clearAll") return clearTasks();
+  if (inputEl.value === ":clearall") return clearTasks();
   const newTask = {
     task: titleCase(inputEl.value),
     isCompleted: false,
     id: randomID(),
   };
   state.unshift(newTask);
-  // localforage.setItem("tasks", state)
-  renderTask();
+
   updateLocal();
+  renderTask();
   inputEl.value = "";
 });
 
+//On task toggle
 taskContainerEl.addEventListener("click", (e) => {
   toggleCompleted(e.target.id);
-  state.sort((a, b) => a.isCompleted - b.isCompleted);
-  // localforage.setItem("tasks", state);
-  updateLocal()
+  // state.sort((a, b) => a.isCompleted - b.isCompleted);
+
+  state = sortBy(state, ["isCompleted"]);
+  updateLocal();
   renderTask();
 });
 
 function clearTasks() {
   state.length = 0;
-  localforage.setItem("tasks", state);
-  renderTask()
-  inputEl.value = "";
 
+  updateLocal();
+  renderTask();
+  inputEl.value = "";
 }
 
 const showYear = document.querySelector(".show-year");
